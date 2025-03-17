@@ -1,14 +1,21 @@
 ﻿
 
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 using Microsoft.EntityFrameworkCore;
 
 namespace Benchmark;
-[MemoryDiagnoser] // Hafıza kullanımını analiz etmek için
+[ShortRunJob,Config(typeof(Config))]
 public class EfCoreBenchmark
 {
     private readonly AppDbContext _context;
-
+    private class Config : ManualConfig
+    {
+        public Config()
+        {
+            SummaryStyle = BenchmarkDotNet.Reports.SummaryStyle.Default.WithRatioStyle(BenchmarkDotNet.Columns.RatioStyle.Trend);
+        }
+    }
     public EfCoreBenchmark()
     {
         _context = new AppDbContext();
