@@ -1,7 +1,6 @@
 ﻿
 
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Configs;
 using Microsoft.EntityFrameworkCore;
 
 namespace Benchmark;
