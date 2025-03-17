@@ -1,9 +1,10 @@
-﻿public class Program
+﻿using Benchmark;
+using BenchmarkDotNet.Running;
+
+public class Program
 {
    public static void Main(string[] args)
     {
-        // bencmark ef core
-        Console.WriteLine("hello world");
-        Console.ReadKey();
+        BenchmarkRunner.Run<EfCoreBenchmark>();
     }
 }
